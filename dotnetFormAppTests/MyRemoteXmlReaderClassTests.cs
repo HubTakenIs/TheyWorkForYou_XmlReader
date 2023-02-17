@@ -13,12 +13,15 @@ namespace dotnetFormApp.Tests
     {
         
         [TestMethod]
-        public void GetAllDataTest()
+        public async Task GetAllDataTestAsync()
         {
             var testReader = new MyRemoteXmlReaderClass();
-            List<IPerson> testList = testReader.GetAllData("https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2021-12-13.xml");
-            
-            Assert.IsNotNull(testList);
+            List<IPerson> testList = await Task.Run(() => testReader.GetAllData("https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2021-12-13.xml"));
+              
+            Assert.IsNotNull(testList.Count == 647);
+
+          
         }
+
     }
 }
