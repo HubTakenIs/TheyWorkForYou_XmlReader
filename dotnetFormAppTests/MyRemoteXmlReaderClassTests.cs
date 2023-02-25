@@ -17,10 +17,10 @@ namespace dotnetFormApp.Tests
         {
             var testReader = new MyRemoteXmlReaderClass();
             List<IPerson> testList = await Task.Run(() => testReader.GetAllData("https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2021-12-13.xml"));
-              
-            Assert.IsNotNull(testList.Count == 647);
 
-          
+            Assert.IsTrue(testList.Count == 647);
+
+
         }
 
     }

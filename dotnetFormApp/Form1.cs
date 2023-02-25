@@ -12,7 +12,7 @@ namespace dotnetFormApp
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             IRemoteDocumentReader<IPerson> myRemoteXmlReader = Factory.GetRemoteDocumentReader();
             
@@ -44,6 +44,8 @@ namespace dotnetFormApp
                 string regMemID = RegMem.id;
                 string regMemDonor = RegMem.donor;
                 decimal totalPayments = 0;
+                string regMemParty = RegMem.PartyAffiliation;
+                string regMemConst = RegMem.constituency;
                 foreach (decimal payment in RegMem.PaymentsReceived)
                 {
                     totalPayments = totalPayments + payment;
@@ -66,7 +68,7 @@ namespace dotnetFormApp
 
                 }
 
-                dt.Rows.Add(i + 1, regMemName, regMemID, MemberPhoto, "party", "Constituency", regMemDonor, totalPayments);
+                dt.Rows.Add(i + 1, regMemName, regMemID, MemberPhoto, regMemParty, regMemConst, regMemDonor, totalPayments);
             }
 
             dataGridView2.DataSource = dt;
