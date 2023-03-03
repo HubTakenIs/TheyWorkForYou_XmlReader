@@ -30,7 +30,6 @@ namespace dotnetFormApp
             dt.Columns.Add("index", typeof(int));
             dt.Columns.Add("Name", typeof(String));
             dt.Columns.Add("ID", typeof(string));
-            dt.Columns.Add("Image", typeof(Image));
             dt.Columns.Add("Party", typeof(string));
             dt.Columns.Add("Constituency", typeof(string));
             dt.Columns.Add("Donor", typeof(string));
@@ -46,29 +45,30 @@ namespace dotnetFormApp
                 decimal totalPayments = 0;
                 string regMemParty = RegMem.PartyAffiliation;
                 string regMemConst = RegMem.constituency;
-                foreach (decimal payment in RegMem.PaymentsReceived)
-                {
-                    totalPayments = totalPayments + payment;
-                }
+                //Image MemberPhoto = null;
+                //foreach (decimal payment in RegMem.PaymentsReceived)
+                //{
+                //    totalPayments = totalPayments + payment;
+                //}
 
-                string ImageURL = "https://www.theyworkforyou.com/people-images/mps/" + regMemID + ".jpg";
-                Image MemberPhoto = null;
-                WebClient wClient = new WebClient();
-                try
-                {
-                    byte[] imageByte = wClient.DownloadData(ImageURL);
-                    MemoryStream stream = new MemoryStream(imageByte);
-                    MemberPhoto = Image.FromStream(stream);
-                }
-                catch (Exception ex)
-                {
-                    byte[] imageByte = wClient.DownloadData("https://cdn-icons-png.flaticon.com/128/2748/2748558.png");
-                    MemoryStream stream = new MemoryStream(imageByte);
-                    MemberPhoto = Image.FromStream(stream);
+                //string ImageURL = "https://www.theyworkforyou.com/people-images/mps/" + regMemID + ".jpg";
+                //Image MemberPhoto = null;
+                //WebClient wClient = new WebClient();
+                //try
+                //{
+                //    byte[] imageByte = wClient.DownloadData(ImageURL);
+                //    MemoryStream stream = new MemoryStream(imageByte);
+                //    MemberPhoto = Image.FromStream(stream);
+                //}
+                //catch (Exception ex)
+                //{
+                //    byte[] imageByte = wClient.DownloadData("https://cdn-icons-png.flaticon.com/128/2748/2748558.png");
+                //    MemoryStream stream = new MemoryStream(imageByte);
+                //    MemberPhoto = Image.FromStream(stream);
 
-                }
+                //}
 
-                dt.Rows.Add(i + 1, regMemName, regMemID, MemberPhoto, regMemParty, regMemConst, regMemDonor, totalPayments);
+                dt.Rows.Add(i + 1, regMemName, regMemID, regMemParty, regMemConst, regMemDonor, totalPayments);
             }
 
             dataGridView2.DataSource = dt;

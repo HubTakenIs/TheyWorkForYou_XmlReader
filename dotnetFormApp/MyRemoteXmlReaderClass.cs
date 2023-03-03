@@ -97,14 +97,14 @@ namespace dotnetFormApp
                     RegMem regMem = (RegMem)_persons[counter-1];
                     regMem.PaymentsReceived = _paymentsReceived;
                     regMem.donor = _donor;
-                    string id = regMem.id;
-                    string regMemURL = "https://www.theyworkforyou.com/mp/" + id;
-                    string[] returnedItems = WebScraper.getPartyAndConstituency(regMemURL);
+                    //string id = regMem.id;
+                    //string regMemURL = "https://www.theyworkforyou.com/mp/" + id;
+                    //string[] returnedItems = WebScraper.getPartyAndConstituency(regMemURL);
 
-                    regMem.PartyAffiliation = returnedItems[0];
-                    regMem.constituency = returnedItems[1];
+                    //regMem.PartyAffiliation = returnedItems[0];
+                    //regMem.constituency = returnedItems[1];
 
-                    
+
                 }
 
 
